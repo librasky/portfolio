@@ -9,8 +9,10 @@
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: radial-gradient(circle at top, #f5f7ff, #ffffff);
-    color: #111;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
     overflow-x: hidden;
   }
 
@@ -18,7 +20,7 @@
     position: fixed;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(100,150,255,0.25), transparent 70%);
+    background: radial-gradient(circle, rgba(100,150,255,0.3), transparent 70%);
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 0;
@@ -26,70 +28,176 @@
 
   header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack name and nav vertically on the left */
+    align-items: flex-start;
     padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .header-left h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #fff, #6b8cff);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  nav a:hover {
+    opacity: 1;
+    color: #6b8cff;
   }
 
   .hero {
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 60px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-container {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #6b8cff;
+    box-shadow: 0 0 20px rgba(107, 140, 255, 0.4);
   }
 
   .hero h2 {
-    font-size: 52px;
+    font-size: 3rem;
     font-weight: 700;
+    margin: 10px 0;
     background: linear-gradient(to right, #6b8cff, #a855f7);
     -webkit-background-clip: text;
     color: transparent;
   }
 
+  .tagline {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+
   .glass {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bio-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    text-align: center;
   }
 
   .projects {
-    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
     margin: auto;
     padding: 40px 20px;
   }
 
   .project {
-    margin-bottom: 30px;
-    padding: 16px;
+    aspect-ratio: 1 / 1; /* Force Square shape */
+    padding: 15px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .project:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.12);
   }
 
-  iframe {
+  .project-thumb {
     width: 100%;
-    height: 300px;
-    border-radius: 12px;
-    margin-bottom: 10px;
+    height: 70%; /* Image takes up most of the square */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .project h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px;
+    line-height: 1.3;
+  }
+
+  .back-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
   }
 
   .detail {
     display: none;
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     padding: 40px 20px;
   }
 
-  .panel {
-    padding: 20px;
-    margin-top: 20px;
+  iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    margin-bottom: 25px;
   }
 
-  .back {
-    cursor: pointer;
-    color: #555;
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.4);
+    margin-top: 50px;
+  }
+
+  .contact-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #6b8cff;
+    font-weight: 600;
   }
 </style>
 </head>
@@ -99,97 +207,136 @@
 <div class="cursor-glow" id="glow"></div>
 
 <header>
-  <h1>Dendi Permadi</h1>
+  <div class="header-left">
+    <h1>Dendi Permadi</h1>
+  </div>
+  <nav>
+    <a href="#biography">Biography</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <h2>XR Designer & Immersive Tech Researcher</h2>
-  <p>Researcher | Creative Technologist | Designer | Game Dev | XR Specialist</p>
+  <div class="profile-container">
+    <img src="Images/ProfilePict_XRImmersive.jpg" class="profile-pic" alt="Profile Template">
+  </div>
+  <h2>Immersive XR Designer & Researcher</h2>
+  <p class="tagline">Exploring spatial interfaces, AI systems, and human-centered XR experiences.</p>
+</section>
+
+<section id="biography" class="bio-section glass">
+  <h3>Biography</h3>
+  <p>Academician and researcher focused on immersive technology and multimedia design. Programme Coordinator at MMU and Co-Lead of the XR-AI Lab.</p>
 </section>
 
 <section class="projects" id="projects"></section>
 
 <section id="detail" class="detail">
-  <span class="back" onclick="goBack()">← Back</span>
+  <button class="back-btn" onclick="goBack()">← Back to Projects</button>
   <h2 id="detail-title"></h2>
-  <iframe id="detail-video" allowfullscreen></iframe>
-  <div class="panel glass" id="detail-research"></div>
-  <div class="panel glass" id="detail-problem"></div>
-  <div class="panel glass" id="detail-solution"></div>
-  <div class="panel glass" id="detail-outcome"></div>
+  <iframe id="detail-video" src="" allowfullscreen></iframe>
+  <div class="panel glass" style="padding:20px; margin-top:10px;">
+    <strong>Research/ Project Focus:</strong> <p id="detail-research"></p>
+    <strong>Publication/ details:</strong> <p id="detail-outcome"></p>
+  </div>
 </section>
 
-<script>
+<footer id="contact">
+  <div class="contact-links">
+    <a href="mailto:dendi@mmu.edu.my">Email</a>
+    <a href="#">Instagram</a>
+    <a href="#">Research Page</a>
+  </div>
+  <p style="margin-top:20px; opacity: 0.5;">&copy; 2026 Dendi Permadi</p>
+</footer>
 
+<script>
 const videoURL = "https://www.youtube.com/embed/AW8BPzwi0J4";
 const videoURL2 = "https://www.youtube.com/embed/d88y3OwUQ5k";
+const videoURL9 = "https://player.vimeo.com/video/831217730?h=c3d9cb3c35";
 
 const projects = [
   {
-    title: "Digital Technologies for Inclusive Cultural Heritage: the Case Study of Serralunga D'alba Castle",
+    title: "Innovating Cardiopulmonary Resuscitation: Enhancing Practical Skills with VR",
+    image: "Images/CPR2.jpg",
     video: videoURL,
-    research: "Natural sites, monuments and historical artefacts are Cultural Heritage that must be properly managed to ensure their safeguard. Institutions and corporate body devoted to the Cultural Heritage management have the essential task of supervising them paying particular attention to their conservation, dissemination and fruition. In this regards, digital technologies through ICT (Information and Communication Technologies) and New Media represent useful tools which have to be used in suitable way. In this context, this contribution shares the methodology adopted for the case study of Serralunga d’Alba castle. In particular, the research project shows the process used for getting the digital model of the castle through HBIM (Historic Building Information Modeling) methodology and the development of a VR (Virtual Reality) model tour. The final project obtained is the result of a methodological approach that aimed to optimize time, costs and efforts.",
-    problem: "Ruffino, P. A., Permadi, D., Gandino, E., Haron, A., Osello, A., & Wong, C. O. (2019). Digital technologies for inclusive cultural heritage: The case study of serralunga d’alba castle. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 4, 141-147.",
-    solution: "Tour Guide Application, 3D virtual tour inside of Serralunga D’Alba castle Italy.",
-    outcome: "Collaboration with drawing TO the future, Politechnico Di Torino Italy "
+    research: "Collaboration with International Medical University (IMU) Malaysia. Virtual Reality (VR) uses 3D graphics and interactive devices to immerse users in virtual environments, enabling safe fails crucial for student learning and patient safety. Its popularity aligns with digital-native students preferences. The Ministry of Health mandates CPR competency for all healthcare personnel based on international guidelines. Conventional CPR instruction with task trainer manikins focuses on technical skills but fails to represent realistic emergencies, leaving trainees unprepared. VR can simulate high-stress conditions, but existing VR CPR training software lacks technical precision. We created a combination of VR immersive simulations and task trainers haptic feedback, offering unlimited practice and enhancing comprehension and retention in realistic settings. Based on Kolb's constructivist and experiential learning theories, it encourages active exploration, reflection, conceptualisation, and practical experience. Using the CIPP framework, VR-CPR integrates immersive simulations with tactile feedback to enhance learning outcomes. Feedback is positive, but challenges like technical issues and faculty training need to remain. Future research should compare VR with conventional methods and address long-term retention.",
+    outcome: "Fei, S. C., Khim, G. L., Aroksamy, J. A., Li, L. J., & Kumarasan, D. K. (2024). INNOVATING CARDIOPULMONARY RESUSCITATION EDUCATION: ENHANCING PRACTICAL SKILLS WITH VIRTUAL REALITY. International E-Journal of Science, Medicine & Education, 18."
   },
   {
     title: "Immersive VR Training Simulation for Aircraft Maintenance",
+    image: "Images/Mag.jpg",
     video: videoURL2,
-    research: "VR vs traditional learning evaluation.",
-    problem: "Low engagement in training systems.",
-    solution: "Immersive simulation learning.",
-    outcome: "Improved retention"
+    research: "Evaluating training retention in VR.",
+    outcome: "Improved maintenance safety protocols."
   },
   {
-    title: "Innovating Cardiopulmonary Resuscitation Education: Enhancing Practical Skills with VR",
+    title: "Inclusive Cultural Heritage: the Case Study of Serralunga D'alba Castle",
+    image: "Images/Serralunga.jpg",
     video: videoURL2,
-    research: "Virtual Reality (VR) uses 3D graphics and interactive devices to immerse users in virtual environments, enabling safe fails crucial for student learning and patient safety. Its popularity aligns with digital-native students preferences. The Ministry of Health mandates CPR competency for all healthcare personnel based on international guidelines. Conventional CPR instruction with task trainer manikins focuses on technical skills but fails to represent realistic emergencies, leaving trainees unprepared. VR can simulate high-stress conditions, but existing VR CPR training software lacks technical precision. We created a combination of VR immersive simulations and task trainers haptic feedback, offering unlimited practice and enhancing comprehension and retention in realistic settings. Based on Kolb's constructivist and experiential learning theories, it encourages active exploration, reflection, conceptualisation, and practical experience.",
-    problem: "Fei, S. C., Khim, G. L., Aroksamy, J. A., Li, L. J., & Kumarasan, D. K. (2024). INNOVATING CARDIOPULMONARY RESUSCITATION EDUCATION: ENHANCING PRACTICAL SKILLS WITH VIRTUAL REALITY. International E-Journal of Science, Medicine & Education, 18.",
-    solution: "Using the CIPP framework, VR-CPR integrates immersive simulations with tactile feedback to enhance learning outcomes. Feedback is positive, but challenges like technical issues and faculty training need to remain. Future research should compare VR with conventional methods and address long-term retention.",
-    outcome: "Collaboration with International Medical University (IMU) Malaysia"
+    research: "Collaboration with drawing TO the future, Politechnico Di Torino Italy. Natural sites, monuments and historical artefacts are Cultural Heritage that must be properly managed to ensure their safeguard. Institutions and corporate body devoted to the Cultural Heritage management have the essential task of supervising them paying particular attention to their conservation, dissemination and fruition. In this regards, digital technologies through ICT (Information and Communication Technologies) and New Media represent useful tools which have to be used in suitable way. In this context, this contribution shares the methodology adopted for the case study of Serralunga d’Alba castle. In particular, the research project shows the process used for getting the digital model of the castle through HBIM (Historic Building Information Modeling) methodology and the development of a VR (Virtual Reality) model tour. The final project obtained is the result of a methodological approach that aimed to optimize time, costs and efforts.",
+    outcome: "Ruffino, P. A., Permadi, D., Gandino, E., Haron, A., Osello, A., & Wong, C. O. (2019). Digital technologies for inclusive cultural heritage: The case study of serralunga d’alba castle. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 4, 141-147."
   },
   {
-    title: "Mixed Reality Collaboration",
+    title: "Digital Twin: The Development of VR Model for Digital Home",
+    image: "Images/Digitaltwin.jpg",
     video: videoURL,
-    research: "Remote collaboration in MR spaces.",
-    problem: "Distance barriers in teamwork.",
-    solution: "Shared MR workspace.",
-    outcome: "Better team coordination"
+    research: "Remote collaborative MR environments.",
+    outcome: "Enhanced team spatial coordination."
   },
   {
-    title: "Haptic Feedback Interface",
+    title: "Revitalizing Art Appreciation Through Immersive Virtual Reality",
+    image: "Images/VR_art.jpg",
     video: videoURL,
-    research: "Touch-based XR interaction studies.",
-    problem: "Lack of physical feedback in XR.",
-    solution: "Haptic glove prototype.",
-    outcome: "Higher immersion"
+    research: "Touch-based interaction studies.",
+    outcome: "Prototype for tactile XR feedback."
   },
   {
-    title: "Urban XR Navigation",
-    video: videoURL,
-    research: "City-scale AR mapping.",
-    problem: "Complex urban navigation.",
-    solution: "AR overlay system.",
-    outcome: "Improved mobility"
+    title: "Virtual Reality Game for Ancient Malay Heritage: Hikayat Hang Tuah",
+    image: "Images/HangTuah.jpg",
+    video: videoURL2,
+    research: "Inclusive navigation in smart cities.",
+    outcome: "Urban mobility accessibility model."
   },
   {
-    title: "XR Research Prototype",
+    title: "Immersive French Language Learning: AR/VR for French Language Vocabulary",
+    image: "Images/French.jpg",
     video: videoURL,
-    research: "Experimental spatial UI testing.",
-    problem: "Non-intuitive XR interfaces.",
-    solution: "Spatial UI redesign.",
-    outcome: "Better usability"
-  }
+    research: "Human-centered AI in 3D spaces.",
+    outcome: "Advanced UI for spatial computing."
+  },
+ {
+    title: "Mobile Augmented Reality Learning Islamic Dua Application for Kids",
+    image: "Images/Dailydua.jpg",
+    video: videoURL,
+    research: "Human-centered AI in 3D spaces.",
+    outcome: "Advanced UI for spatial computing."
+  },
+{
+    title: "The Rig Virtual Reality",
+    image: "Images/Therig.jpg",
+    video: videoURL9,
+    research: "Immersive Virtual Reality platform. While the park is still under development, you can explore its thrilling rides, breathtaking attractions, and unique features firsthand through our interactive VR experience. This isnt just a preview. its a journey into the future. With our VR technology, you can feel the excitement, visualize the possibilities, and immerse yourself in the magic of whats to come. Get ready to see the impossible become reality",
+    outcome: "Client : Holovis UK, Year : 2022."
+  },
+{
+    title: "Authorised Entrant & Standby Person (AESP) in Virtual Relity",
+    image: "Images/AIV.jpg",
+    video: videoURL,
+    research: "Human-centered AI in 3D spaces.",
+    outcome: "Advanced UI for spatial computing."
+  },
+
+
 ];
 
 const container = document.getElementById("projects");
-
 projects.forEach((p, i) => {
   const div = document.createElement("div");
   div.className = "project glass";
   div.innerHTML = `
-    <iframe src="${p.video}" allowfullscreen></iframe>
+    <img src="${p.image}" class="project-thumb">
     <h3>${p.title}</h3>
   `;
   div.onclick = () => openProject(i);
@@ -198,21 +345,21 @@ projects.forEach((p, i) => {
 
 function openProject(i) {
   document.getElementById('projects').style.display = 'none';
+  document.getElementById('biography').style.display = 'none';
   document.getElementById('detail').style.display = 'block';
-
   const p = projects[i];
-
   document.getElementById('detail-title').innerText = p.title;
   document.getElementById('detail-video').src = p.video;
   document.getElementById('detail-research').innerText = p.research;
-  document.getElementById('detail-problem').innerText = p.problem;
-  document.getElementById('detail-solution').innerText = p.solution;
   document.getElementById('detail-outcome').innerText = p.outcome;
+  window.scrollTo(0,0);
 }
 
 function goBack() {
-  document.getElementById('projects').style.display = 'block';
+  document.getElementById('projects').style.display = 'grid';
+  document.getElementById('biography').style.display = 'block';
   document.getElementById('detail').style.display = 'none';
+  document.getElementById('detail-video').src = "";
 }
 
 document.addEventListener('mousemove', e => {
@@ -220,7 +367,6 @@ document.addEventListener('mousemove', e => {
   glow.style.left = e.clientX + 'px';
   glow.style.top = e.clientY + 'px';
 });
-
 </script>
 
 </body>

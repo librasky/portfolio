@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dendi Permadi — XR Portfolio</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  .cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(100,150,255,0.3), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column; /* Stack name and nav vertically on the left */
+    align-items: flex-start;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .header-left h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #fff, #6b8cff);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  nav a:hover {
+    opacity: 1;
+    color: #6b8cff;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-container {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #6b8cff;
+    box-shadow: 0 0 20px rgba(107, 140, 255, 0.4);
+  }
+
+  .hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 10px 0;
+    background: linear-gradient(to right, #6b8cff, #a855f7);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bio-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .bio-sectionA {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    text-align: left;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  .project {
+    aspect-ratio: 1 / 1; /* Force Square shape */
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: 70%; /* Image takes up most of the square */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .project h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px;
+    line-height: 1.3;
+  }
+
+  .back-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .detail {
+    display: none;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.4);
+    margin-top: 50px;
+  }
+
+  .contact-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #6b8cff;
+    font-weight: 600;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<header>
+  <div class="header-left">
+    <h1>Dendi Permadi</h1>
+  </div>
+  <nav>
+<a href="index.html">Projects</a>
+   <a href="biography.html">Biography</a>
+    <a href="research.html">Research</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="profile-container">
+      </div>
+  <h2>Contact</h2>
+  <p class="tagline">Researcher | Creative Technologist | Designer | Game Dev | XR Specialist</p>
+</section>
+
+
+<section id="biography" class="bio-section glass">
+  
+  <p>Academician and researcher focused on immersive technology and multimedia design. Programme Coordinator at MMU and Co-Lead of the XR-AI Lab.</p>
+</section>
+
+<section id="biography" class="bio-sectionA glass">
+
+
+<div style="white-space: pre-line;">
+<h3>Dendi Permadi</h3>
+
+Email		: dendimedia@gmail.com
+
+Google Scholar	: <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en">https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en</a>
+
+
+<img src="Images/ProfilePict.jpg">
+
+</div>
+
+
+</section>
+
+
+<footer id="contact">
+  <div class="contact-links">
+    <a href="mailto:dendimedia@gmail.com">Email</a>
+    <a href="https://Instagram.com/dendipermadi">Instagram</a>
+    <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en&oi=ao">Research Page</a>
+  </div>
+  <p style="margin-top:20px; opacity: 0.5;">&copy; 2026 Dendi Permadi</p>
+</footer>
+
+
+
+</body>
+</html>

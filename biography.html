@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dendi Permadi — XR Portfolio</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #000;
+    overflow-x: hidden;
+  }
+
+  .cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(100,150,255,0.3), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column; /* Stack name and nav vertically on the left */
+    align-items: flex-start;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .header-left h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #fff, #6b8cff);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  nav a:hover {
+    opacity: 1;
+    color: #6b8cff;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-container {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #6b8cff;
+    box-shadow: 0 0 20px rgba(107, 140, 255, 0.4);
+  }
+
+  .hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 10px 0;
+    background: linear-gradient(to right, #6b8cff, #a855f7);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bio-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .bio-sectionA {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    text-align: left;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  .project {
+    aspect-ratio: 1 / 1; /* Force Square shape */
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: 70%; /* Image takes up most of the square */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .project h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px;
+    line-height: 1.3;
+  }
+
+  .back-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .detail {
+    display: none;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.4);
+    margin-top: 50px;
+  }
+
+  .contact-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #6b8cff;
+    font-weight: 600;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<header>
+  <div class="header-left">
+    <h1>Dendi Permadi</h1>
+  </div>
+  <nav>
+   <a href="index.html">Projects</a>
+   <a href="biography.html">Biography</a>
+    <a href="research.html">Research</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="profile-container">
+      </div>
+  <h2>Biography</h2>
+  <p class="tagline">Researcher | Creative Technologist | Designer | Game Dev | XR Specialist</p>
+</section>
+
+<section id="biography" class="bio-sectionA glass">
+  <h3>Dendi Permadi B.Mm., M.Sc., P.Tech.</h3>
+  <p>Dendi Permadi is a Lecturer in Immersive Media at the Faculty of Creative Multimedia, Multimedia University (MMU), Malaysia, where he also serves as the Programme Coordinator for the Bachelor of Multimedia (Virtual Reality) and Assistant Coordinator for Bachelor in Immersive Media Design. He also Co-Leads the XR-AI Lab within the AIX Transformation Centre (MMUxMCMC). He is a certified Professional Technologist registered with the Malaysian Board of Technologists (MBOT). He holds a Bachelor of Multimedia from Universiti Utara Malaysia and a Master of Science in Creative Multimedia from Multimedia University, Malaysia, which included a postgraduate mobility programme at Inje University, South Korea.  </p>
+
+ <p>Dendi was an Erasmus+ trainee at the Politecnico di Torino Italy, where he contributed to research projects at the Department of Structures, Building and Geotechnical Engineering (DISEG) in the “Drawing TO the Future” laboratory. His work focused on Building Information Modelling (BIM), Facility Management, Cultural Heritage, and Virtual and Augmented Reality applications. Before joining academia, Dendi worked in the industry as a Front-End Web Developer at Taukala Sdn. Bhd., and later as an AR/VR Developer at WR Media Sdn. Bhd. He also founded and managed an independent game development studio, Whitekites Games. His research interests include Immersive Media, encompassing Virtual, Augmented, and Mixed Reality, Game Design and Development, Artificial Intelligent (AI) and User Experience (UX). He also serves as a reviewer for the Journals Multimedia Tools and Applications and the International Journal of Creative Multimedia.</p>
+<p></p>
+
+<div style="white-space: pre-line;">
+<h3>AWARD AND RECOGNITION</h3>
+1. MMU Star Award, Outstanding staff contributions and achievement, 2024
+
+2. Southeast Asia Top 8 Creative Lecturer, ED Ranks, 2023
+
+3. Grand Prize Award and Special Award (Mentor), Digital Innovation Creativepreneur (DICE 2.0), Ministry of Higher Education Malaysia, 2024
+
+4. Champion (Best Projects & Systems) & Gold Award, iNVENTX Invention Competition 2025
+
+5. Gold Award, International Invention, Innovation & Technology Exhibition (ITEX), 2025 
+
+6. Gold Award, International University Carnival on E-Learning (IUCEL) kNOVASI, 2024
+
+7. Gold Award, Malaysia Technology Expo (MTE), 2020
+
+8. Gold Award, Research Innovation, Commercialization and Entrepreneurship Showcase (RICES), 2019 
+
+9. Best Presenter Award, The 4th International Conference on Creative Multimedia (ICCM), 2024
+
+10. Best Paper Award, International Conference on Applied Science, Engineering, and Advanced Technology (EAW-ICASEAT), 2023
+
+11. Artist of the Year, ISS MMU Excellence Awards, 2014
+
+12. 1st Winner, Website Design Competition, TELKOM Sumatera Selatan, 2007
+</div>
+
+<div style="white-space: pre-line;">
+<h3>CREATIVE WORK / EXHIBITION</h3>
+1.	Artist, Johor Through The Eyes of An Artist, Visions of Reality: Sulaiman Esa’s Immersive Art Show, 15 Sept- 8 Oct. 2023, 27 Jalan Dohby, Ruang Thinkcity, Johor Bahru, Malaysia
+
+2.	Artist, Immersive & Interactive Media for Malaysia Tanahairku: Dulu, Kini & Masa Depan, Citra Nusa @Muzium, Borneo Cultures Museum Kuching, Sarawak (31 July - 5 August), Matang Museum, Perak (9-10 September) and Kota Kayang Museum (3-5 November).  
+
+3.	Artist, Immersive Art Exhibition: VR Johor Through The Eyes of Sulaiman Esa, RefleksiSeratus. 25-26 May 2024, Komtar JBCC.
+
+4.	Artist, Cybernetics, Landscapes, Spiritualities: Projection Mapping Perak Man. CIM Open Lab, 29 April – 10 May 2024. Code: Galery, Cyberjaya.
+
+5.	Artist, iNVENTX Space: Emotion.Expression.Identity. 18 Oct-18 Nov 2024, Code: Gallery, Cyberjaya.
+
+6.	Artist, Spiritualities Landscapes: Projection Mapping Perak Man. 12 Oct-12 Nov 2024, Telekom Museum, Kuala Lumpur.
+
+7.	Artist, iNVENTX Sustainaissance: Legacy of Hang Tuah. 1 - 30 July 2025, E-Gallery, MMU Cyberjaya.
+
+</div>
+
+<div style="white-space: pre-line;">
+<h3>ARTICLE, MAGAZINE AND INTERVIEW</h3>
+1.	2024, June 13-19. Inovasi AR Angkat Karya Tempatan. In Shahemy, A. (Ed.) Majoriti 7 – Adrenalin Metropolitan Magazine, 4-5. https://ops.allasianews.com:8443/imageRepo/AAN_Library/Print/202406/20240613/news-848802-20240613-2325-1718227328891.pdf
+
+2.	2021, January. 4.0 Revolusi Digital: Generasi Millenial. Radio Television Malaysia (RTM).
+
+3.	2019, October 15. Adaptasi teknologi VR [MetroTv]. In Hasan, M. S. (Ed.) IT Metro: Harian Metro Newspaper, 38-39. https://www.hmetro.com.my/itmetro/2019/10/507159/adaptasi-teknologi-vr-metrotv
+
+4.	2019, October 1. Permainan Reality Maya Leftenan Adnan. In Zulkifli, A. M. (Ed.) K2 Menyelami Hidup Anda: Kosmo Newspaper, 17-19.
+
+
+</div>
+
+<img src="Images/BG1_XRImmersive.jpg">
+
+</section>
+
+
+<footer id="contact">
+  <div class="contact-links">
+    <a href="mailto:dendimedia@gmail.com">Email</a>
+    <a href="https://Instagram.com/dendipermadi">Instagram</a>
+    <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en&oi=ao">Research Page</a>
+  </div>
+  <p style="margin-top:20px; opacity: 0.5;">&copy; 2026 Dendi Permadi</p>
+</footer>
+
+
+
+</body>
+</html>

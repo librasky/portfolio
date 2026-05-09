@@ -6,78 +6,84 @@
 <title>Dendi Permadi — XR Portfolio</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    overflow-x: hidden;
-  }
+*{
+  box-sizing:border-box;
+}
 
-  .cursor-glow {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(100,150,255,0.3), transparent 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+              url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-  header {
-    display: flex;
-    flex-direction: column; /* Stack name and nav vertically on the left */
-    align-items: flex-start;
-    padding: 20px 40px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(100,150,255,0.15), transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
 
-  .header-left h1 {
-    margin: 0 0 10px 0;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-    background: linear-gradient(to right, #fff, #6b8cff);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 
-  nav {
-    display: flex;
-    gap: 20px;
-  }
+.header-left h1 {
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #fff, #6b8cff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-  nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    opacity: 0.7;
-    transition: 0.3s;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-  nav a:hover {
-    opacity: 1;
-    color: #6b8cff;
-  }
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: 0.3s;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-  .hero {
-    text-align: center;
-    padding: 60px 20px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+nav a:hover {
+  opacity: 1;
+  color: #6b8cff;
+}
 
-  .profile-container {
+.hero {
+  text-align: center;
+  padding: 80px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+ .profile-container {
     width: 160px;
     height: 160px;
     margin-bottom: 20px;
@@ -92,132 +98,202 @@
     box-shadow: 0 0 20px rgba(107, 140, 255, 0.4);
   }
 
-  .hero h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 10px 0;
-    background: linear-gradient(to right, #6b8cff, #a855f7);
-    -webkit-background-clip: text;
-    color: transparent;
+
+.hero h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 10px 0;
+  background: linear-gradient(to right, #6b8cff, #a855f7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-group {
+  max-width: 1300px;
+  margin: 60px auto;
+  padding: 0 25px;
+}
+
+.group-title {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  border-left: 4px solid #6b8cff;
+  padding-left: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.project {
+  aspect-ratio: 1 / 1;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.12);
+}
+
+.project-thumb {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.project h3 {
+  font-size: 1rem;
+  margin: 12px 0 0;
+  line-height: 1.4;
+}
+
+.detail {
+  display: none;
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  border: none;
+}
+
+.panel {
+  padding: 25px;
+  margin-top: 10px;
+  background: #ffffff;
+  border-radius: 15px;
+  color: #111;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+}
+
+.detail-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.detail-images img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.pdf-section {
+  margin-top: 25px;
+}
+
+.pdf-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.pdf-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  background: #ff4b2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.pdf-info {
+  flex: 1;
+}
+
+.pdf-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pdf-download {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #6b8cff;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.4);
+  margin-top: 60px;
+}
+
+.contact-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #6b8cff;
+  font-weight: 600;
+}
+
+@media(max-width:768px){
+  .hero h2{
+    font-size:2.2rem;
   }
 
-  .tagline {
-    font-size: 1.2rem;
-    color: #ccc;
-    max-width: 700px;
-    margin-bottom: 20px;
+  iframe{
+    height:300px;
   }
-
-  .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .bio-section {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    padding: 30px;
-    text-align: center;
-  }
-
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px;
-  }
-
-  .project {
-    aspect-ratio: 1 / 1; /* Force Square shape */
-    padding: 15px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .project:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .project-thumb {
-    width: 100%;
-    height: 70%; /* Image takes up most of the square */
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  .project h3 {
-    font-size: 1.1rem;
-    margin: 10px 0 5px;
-    line-height: 1.3;
-  }
-
-  .back-btn {
-    display: inline-block;
-    padding: 12px 28px;
-    margin-bottom: 30px;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    border: none;
-    transition: 0.3s;
-  }
-
-  .detail {
-    display: none;
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-  }
-
-  iframe {
-    width: 100%;
-    height: 450px;
-    border-radius: 20px;
-    margin-bottom: 25px;
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(0,0,0,0.4);
-    margin-top: 50px;
-  }
-
-  .contact-links a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #6b8cff;
-    font-weight: 600;
-  }
-
-  .detail-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin-top: 25px;
-  }
-
-  .detail-images img {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-    transition: 0.3s ease;
-  }
-
-  .detail-images img:hover {
-    transform: scale(1.02);
-  }
-
+}
 </style>
 </head>
 
@@ -237,178 +313,386 @@
   </nav>
 </header>
 
-<section class="hero">
-  <div class="profile-container">
+<section class="hero" id="hero-section">
+ <div class="profile-container">
     
   </div>
   <h2>Immersive XR Designer & Researcher</h2>
-  <p class="tagline">Exploring spatial interfaces, AI systems, and human-centered XR experiences.</p>
+  <p class="tagline">
+    Virtual and augmented reality designers are a visionary bunch. We create innovations that do not exist yet, perhaps in the real world, and experiment with something that is out of the box. Many creators can create VR and AR applications by utilizing game engine software such as Unity3D or Unreal engine, but the question is, will those applications have meaning? Designing VR and AR applications isn’t just about 3D modelling, scripting, using a plugin, and converting desktop versions to VR or AR versions. It’s about figuring out what you’re trying to give the user a meaningful and lasting experience by taking advantage of VR and AR technology and making sense of the content that is right for VR and AR. To do this, we must have a user experience vision beyond human-computer interaction that comes from innovative thinking with an open mind and heart. What is the purpose of developing your VR/AR application? Did you create it with your heart and not with your eyes? Ask the user to test and feel the application. Is it a lasting experience? To develop VR and AR applications, vision not only involves the eyes, but also involves other senses, including touch, hearing, and the sense of space called proprioception. Further, several researchers are also now carrying out studies to develop digital smell and taste. I intentionally define vision as one of sense ability ‘sight’ and also as a thinking ability to imagine the future with wisdom for VR and AR experience. This website documents my collaborative process with students and showcases a selection of projects developed under my supervision, alongside my personal own professional projects, research and design works.
+  </p>
 </section>
 
 
-
-<section class="projects" id="projects"></section>
+<div id="projects"></div>
 
 <section id="detail" class="detail">
   <button class="back-btn" onclick="goBack()">← Back to Projects</button>
-  <h2 id="detail-title"></h2>
-  <iframe id="detail-video" src="" allowfullscreen></iframe>
-  <div class="panel" style="padding:20px; margin-top:10px; background:#ffffff; border-radius:15px; color:#111;">
-    <strong style="color:#000;">Research | Project Focus:</strong>
-    <p id="detail-research" style="color:#222;"></p>
 
-    <strong style="color:#000;">Publication | Details:</strong>
-    <p id="detail-outcome" style="color:#222;"></p>
+  <h2 id="detail-title"></h2>
+
+  <iframe id="detail-video" src="" allowfullscreen></iframe>
+
+  <div class="panel">
+
+    <strong>Research | Project Focus:</strong>
+    <p id="detail-research"></p>
+
+    <strong>Publication | Details:</strong>
+    <p id="detail-outcome"></p>
+
+    <div class="pdf-section">
+      <strong>Related PDF:</strong>
+
+      <div class="pdf-card">
+        <div class="pdf-icon">PDF</div>
+
+        <div class="pdf-info">
+          <div class="pdf-title" id="pdf-title">
+            Sample Research PDF
+          </div>
+
+          <button id="pdf-link" class="pdf-download" onclick="togglePDFViewer()">View PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pdf-viewer-container" style="display:none; margin-top:20px;">
+      <iframe id="pdf-viewer" src="" style="width:100%; height:700px; border:none; border-radius:12px;"></iframe>
+    </div>
 
     <div id="detail-images" class="detail-images"></div>
   </div>
-</br>
-<button class="back-btn" onclick="goBack()">← Back to Projects</button>
-</section>
 
-<section id="biography" class="bio-section glass">
-  
+  <br>
+
+  <button class="back-btn" onclick="goBack()">← Back to Projects</button>
 </section>
 
 <footer id="contact">
   <div class="contact-links">
     <a href="mailto:dendimedia@gmail.com">Email</a>
-    <a href="https://Instagram.com/dendipermadi">Instagram</a>
-    <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en&oi=ao">Research Page</a>
+    <a href="https://instagram.com/dendipermadi" target="_blank">Instagram</a>
+    <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en&oi=ao" target="_blank">Research Page</a>
   </div>
-  <p style="margin-top:20px; opacity: 0.5;">&copy; 2026 Dendi Permadi</p>
+
+  <p style="margin-top:20px; opacity:0.5;">
+    © 2026 Dendi Permadi
+  </p>
 </footer>
 
 <script>
-const videoURL = "https://www.youtube.com/embed/AW8BPzwi0J4";
+const projectGroups = [
+  {
+    category: "Supervised Student Project",
+    items: [
+      
 
-const videoURL1 = "https://www.youtube.com/embed/fSfGf70Zq0A";
-const videoURL2 = "https://www.youtube.com/embed/ZMSf3gnFBTI";
-const videoURL3 = "https://www.youtube.com/embed/d88y3OwUQ5k";
-const videoURL4 = "https://www.youtube.com/embed/aHduR19d_3s";
-const videoURL5 = "https://www.youtube.com/embed/d88y3OwUQ5k";
-const videoURL6 = "https://www.youtube.com/embed/XJOr_MDfhhA";
-const videoURL7 = "https://www.youtube.com/embed/PnwfQAv72qw";
-const videoURL8 = "https://www.youtube.com/embed/VoylQFutOCE";
-const videoURL9 = "https://www.youtube.com/embed/NLgFOmOcte4";
-const videoURL10 = "https://player.vimeo.com/video/831217730?h=c3d9cb3c35";
-const videoURL11 = "https://www.youtube.com/embed/0k6UwH-hIUg";
+      
 
-const projects = [
-  {
-    title: "CARDIOPULMONARY RESUSCITATION: Enhancing Practical Skills with VR",
-    image: "Images/CPR2.jpg",
-    gallery: ["Images/ProjectImages/IMU1.jpg","Images/ProjectImages/IMU3.png","Images/ProjectImages/IMU4.png","Images/ProjectImages/IMU2.jpg","Images/ProjectImages/IMU5.png"],
-    video: videoURL1,
-    research: "Collaboration with International Medical University (IMU) Malaysia. Virtual Reality (VR) uses 3D graphics and interactive devices to immerse users in virtual environments, enabling safe fails crucial for student learning and patient safety. Its popularity aligns with digital-native students preferences. The Ministry of Health mandates CPR competency for all healthcare personnel based on international guidelines. Conventional CPR instruction with task trainer manikins focuses on technical skills but fails to represent realistic emergencies, leaving trainees unprepared. VR can simulate high-stress conditions, but existing VR CPR training software lacks technical precision. We created a combination of VR immersive simulations and task trainers haptic feedback, offering unlimited practice and enhancing comprehension and retention in realistic settings. Based on Kolb's constructivist and experiential learning theories, it encourages active exploration, reflection, conceptualisation, and practical experience. Using the CIPP framework, VR-CPR integrates immersive simulations with tactile feedback to enhance learning outcomes. Feedback is positive, but challenges like technical issues and faculty training need to remain. Future research should compare VR with conventional methods and address long-term retention.",
-    outcome: "Fei, S. C., Khim, G. L., Permadi, D., Aroksamy, J. A., Li, L. J., & Kumarasan, D. K. (2024). INNOVATING CARDIOPULMONARY RESUSCITATION EDUCATION: ENHANCING PRACTICAL SKILLS WITH VIRTUAL REALITY. International E-Journal of Science, Medicine & Education, 18."
-  },
-  {
-    title: "AIRCRAFT MAINTANANCE: Immersive VR Training Simulation",
-    image: "Images/MAG.jpg",
-    gallery: ["Images/ProjectImages/MAG1.png","Images/ProjectImages/MAG2.jpg","Images/ProjectImages/MAG0.jpg","Images/ProjectImages/MAG3.jpg","Images/ProjectImages/MAG4.jpg","Images/ProjectImages/MAG5.jpg"],
-    video: videoURL2,
-    research: "Collaboration with Malaysia Airlines Berhad (MAB) Engineering. Traditional training in aircraft maintenance struggles to meet the demands of modern aviation. Thus, in a collaboration with Malaysia Airlines Berhad Engineering Service, an immersive VR Training Simulation application was designed and developed to elevate the competencies of aircraft maintenance personnel. Key benefits include improved training efficiency, cost savings, reduced safety risks, and enhanced job satisfaction. As aviation advances toward greater safety and efficiency, this VR innovation sets a new training standard with strong commercial potential as a scalable, cost-effective solution for industry-wide upskilling. The Virtual Reality simulator enables repeated practice without wear and tear on physical aircraft components, allowing scalable and consistent learning experiences across training cohorts. The simulator transforms aviation training by advancing safety, precision, and operational performance. It focuses on replicates real-world tools, environments, and scenarios with high fidelity to enable trainees to master complex tasks in a controlled, risk-free setting. The objective is to provide a platform that enhances skill acquisition and boosts confidence in performing critical maintenance procedures. VR training offers a promising approach to enhance the training of aircraft maintenance personnel, particularly for tasks that involve complex procedures or potential safety hazards. By simulating a realistic training environment, VR can provide a safe, efficient, and effective way for trainees to develop the skills and knowledge necessary to maintain aircraft safely and reliably. ",
-    outcome: "Addressing the shortage of skilled trainers and ensuring procedural accuracy."
-  },
-  {
-    title: "INCLUSIVE CULTURAL HERITAGE: the Case Study of Serralunga D'alba Castle",
-    image: "Images/Serralunga.jpg",
-    gallery: ["Images/Serralunga.jpg"],
-    video: videoURL3,
-    research: "Collaboration with drawing TO the future, Politechnico Di Torino Italy. Natural sites, monuments and historical artefacts are Cultural Heritage that must be properly managed to ensure their safeguard. Institutions and corporate body devoted to the Cultural Heritage management have the essential task of supervising them paying particular attention to their conservation, dissemination and fruition. In this regards, digital technologies through ICT (Information and Communication Technologies) and New Media represent useful tools which have to be used in suitable way. In this context, this contribution shares the methodology adopted for the case study of Serralunga d’Alba castle. In particular, the research project shows the process used for getting the digital model of the castle through HBIM (Historic Building Information Modeling) methodology and the development of a VR (Virtual Reality) model tour. The final project obtained is the result of a methodological approach that aimed to optimize time, costs and efforts.",
-    outcome: "Ruffino, P. A., Permadi, D., Gandino, E., Haron, A., Osello, A., & Wong, C. O. (2019). Digital technologies for inclusive cultural heritage: The case study of serralunga d’alba castle. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 4, 141-147."
-  },
- {
-    title: "SPATIAL DESIGN: Immersive Virtual Environments Presence",
-    image: "Images/VE.jpg",
-    gallery: ["Images/VE.jpg"],
-    video: videoURL4,
-    research: "My approach to spatial design centers on the creation of high-fidelity, interactive virtual environments that bridge the gap between physical architecture and digital interaction.",
-    outcome: "Virtual Environment Design."
-  },
+      {
+        title: "UNLOCK REVERBERATE: Creative Showcase",
+        image: "Images/Unlock.jpg",
+        gallery: ["Images/ProjectImages/Unlock1.jpg"],
+        video: "https://www.youtube.com/embed/xzFHWUoErfg",
+        research: "Unlock Reverberate is an archive of my students' creative work. I manage projects within Virtual Reality and Immersive Media Design. Working with these students constantly surprises me, they have so many fantastic ideas. I supervise and help them turn their imaginations into reality, and I curate this book alongside my colleagues.",
+        outcome: "Permadi D., Perumal V., Jabbar E.A., Haron A., Sulaiman N., Cheong S. N., (2025). Unlock Reveberate: Creative Showcase 2025 Publication, MMU Press. Malaysia",
+        pdf: "Pdf/Unlock.pdf",
+        pdfTitle: "Unlock REVERBERATE Book"
+      },
 
-  {
-    title: "DIGITAL TWIN: The Development of VR Model for Digital Home",
-    image: "Images/Digitaltwin.jpg",
-    gallery: ["Images/Digitaltwin.jpg"],
-    video: videoURL5,
-    research: "Remote collaborative MR environments.",
-    outcome: "Enhanced team spatial coordination."
-  },
-  {
-    title: "REVITALIZING ART Appreciation Through Immersive Virtual Reality",
-    image: "Images/VR_art.jpg",
-    gallery: ["Images/VR_art.jpg"],
-    video: videoURL6,
-    research: "Project with my Final Year Students",
-    outcome: "Prototype for tactile XR feedback."
-  },
-  {
-    title: "ANCIENT MALAY HERITAGE: Virtual Reality Game Hikayat Hang Tuah",
-    image: "Images/HangTuah.jpg",
-    gallery: ["Images/HangTuah.jpg"],
-    video: videoURL7,
-    research: "Inclusive navigation in smart cities.",
-    outcome: "Urban mobility accessibility model."
-  },
-  {
-    title: "FRENCH LANGUAGE LEARNING: Immersive AR/VR for Educating Vocabulary",
-    image: "Images/French.jpg",
-    gallery: ["Images/ProjectImages/Mission.jpg", "Images/ProjectImages/Mission1.jpg"],
-    video: videoURL8,
-    research: "Human-centered AI in 3D spaces.",
-    outcome: "Advanced UI for spatial computing."
-  },
- {
-    title: "MOBILE AUGMENTED REALITY: Learning Islamic Dua Application for Kids",
-    image: "Images/Dailydua.jpg",
-    gallery: ["Images/Dailydua.jpg"],
-    video: videoURL9,
-    research: "Human-centered AI in 3D spaces.",
-    outcome: "Advanced UI for spatial computing."
-  },
+        {
+        title: "REVITALIZING ART: Appreciation Through Immersive Virtual Reality",
+        image: "Images/VR_art.jpg",
+        gallery: ["Images/ProjectImages/VR_art1.jpg"],
+        video: "https://www.youtube.com/embed/XJOr_MDfhhA",
+        research: "Leading a project with my final-year students. In the realm of art museums and galleries, the engagement of tech-savvy young adults with traditional physical paintings poses a notable challenge. This challenge emanates from the perception held by these individuals, who regard physical artworks as static and incongruent with their preference for interactive digital media. To address this issue, the present study endeavors to mitigate this disparity by designing and developing CanvasVerse, an immersive Virtual Reality application to bridge the disconnect between younger audiences and conventional paintings. The research primarily focusses on the investigation of CanvasVerse's usability and learnability within the demographic of young adults in Malaysia. Particularly, emphasis on understanding how interactivity and immersion, an integral characteristic of immersive VR experience, contribute positively to the appreciation of paintings. The empirical findings derived from System Usability Scale indicate that CanvasVerse effectively enhances emotional connections and engagement levels with physical paintings. Consequently, it provides a transformative encounter that also enhances the viewers' comprehension of artworks. These findings substantiate the potential of immersive VR technology to rekindle the appreciation of traditional paintings among younger demographics, thus marking a significant progression within the domain of art engagement and education. The study's contribution extends to the broader art community by introducing innovative avenues for engaging young audiences as well as deepening their understanding and connection with physical artworks ",
+        outcome: "Cheong, S. N., Yusaini, N. A. Z. B., Zaid, H. B., Permadi, D., Sulaiman, N. B., & Yoong, L. K. (2023, December). Enhancing the Art Experience: Designing Immersive VR Paintings. In 2023 IEEE 21st Student Conference on Research and Development (SCOReD) (pp. 356-362). IEEE [Scopus Indexed]",
+        pdf: "Pdf/VRArt.pdf",
+        pdfTitle: "Immersive Art Appreciation"
+      },
+
 {
-    title: "PARK AND RIDES SIMULATION: The Rig Virtual Reality",
-    image: "Images/Therig.jpg",
-    gallery: ["Images/Therig.jpg"],
-    video: videoURL10,
-    research: "Immersive Virtual Reality platform. While the park is still under development, you can explore its thrilling rides, breathtaking attractions, and unique features firsthand through our interactive VR experience. This isnt just a preview. its a journey into the future. With our VR technology, you can feel the excitement, visualize the possibilities, and immerse yourself in the magic of whats to come. Get ready to see the impossible become reality",
-    outcome: "Client : Holovis UK, Year : 2022."
+        title: "DANCE HERITAGE: An Interactive and Immersive VR Journey into Malaysian Joget",
+        image: "Images/Dance.jpg",
+        gallery: ["Images/ProjectImages/DanceVR1.png"],
+        video: "https://www.youtube.com/embed/Be5-nbmNs3I",
+        research: "Leading a project with my final-year students. The Immersive VR Joget is a pioneering application aimed at revitalizing Malaysia's traditional dance heritage. The objective is to address challenges in traditional dance education, such as limited access to skilled instructors and geographical barriers. The VR application offers a fully immersive 360-degree perspective of the Joget dance. Gamified learning and interactive NPCs guide users through dance movements and cultural contexts, thus enhancing engagement. This innovative approach merges cultural preservation with cutting-edge technology, creating an accessible and enriching dance-learning experience for future generations. The Cultural Rhythms VR application represents a significant advancement in leveraging technology for cultural preservation. In response to diminishing interest among younger generations, the project investigates how VR, combined with motion capture and interactive storytelling, can create engaging educational experiences. A user evaluation using the System Usability Scale (SUS) was conducted to assess the VR application's effectiveness and usability. Results indicate high user satisfaction, ease of use, and a strong likelihood of frequent use among participants, underscoring the application's success in engaging its target audience. The creation of a VR application that authentically replicates Joget dance movements, accompanied by interactive elements to enhance user engagement and cultural understanding. By making traditional dances accessible and appealing to younger generations, it contributes to the ongoing promotion and safeguarding of Malaysia's cultural heritage.",
+        outcome: "Paper In-Progress",
+        pdf: "Pdf/DanceVR.pdf",
+        pdfTitle: "Dance VR"
+      },
+    ]
   },
+
+  {
+    category: "Project: Industrial XR, Healthcare, Cultural Heritage, Safety & Education",
+    items: [
+
+      {
+        title: "CARDIOPULMONARY RESUSCITATION: Enhancing Practical Skills with VR",
+        image: "Images/CPR2.jpg",
+        gallery: ["Images/ProjectImages/IMU1.jpg","Images/ProjectImages/IMU3.png","Images/ProjectImages/IMU4.png","Images/ProjectImages/IMU2.jpg","Images/ProjectImages/IMU5.png"],
+        video: "https://www.youtube.com/embed/fSfGf70Zq0A",
+        research: "Collaboration with International Medical University (IMU) Malaysia. Virtual Reality (VR) uses 3D graphics and interactive devices to immerse users in virtual environments, enabling safe fails crucial for student learning and patient safety. Its popularity aligns with digital-native students preferences. The Ministry of Health mandates CPR competency for all healthcare personnel based on international guidelines. Conventional CPR instruction with task trainer manikins focuses on technical skills but fails to represent realistic emergencies, leaving trainees unprepared. VR can simulate high-stress conditions, but existing VR CPR training software lacks technical precision. We created a combination of VR immersive simulations and task trainers haptic feedback, offering unlimited practice and enhancing comprehension and retention in realistic settings. Based on Kolb's constructivist and experiential learning theories, it encourages active exploration, reflection, conceptualisation, and practical experience. Using the CIPP framework, VR-CPR integrates immersive simulations with tactile feedback to enhance learning outcomes. Feedback is positive, but challenges like technical issues and faculty training need to remain. Future research should compare VR with conventional methods and address long-term retention.",
+        outcome: "Fei, S. C., Khim, G. L., Permadi, D., Aroksamy, J. A., Li, L. J., & Kumarasan, D. K. (2024). INNOVATING CARDIOPULMONARY RESUSCITATION EDUCATION: ENHANCING PRACTICAL SKILLS WITH VIRTUAL REALITY. International E-Journal of Science, Medicine & Education, 18.",
+        pdf: "Pdf/CPRVR.pdf",
+        pdfTitle: "CPR VR Research Publication"
+      },
 {
-    title: "CONFINED SPACE SAFETY: Authorised Entrant & Standby Person in VR",
-    image: "Images/AIV.jpg",
-    gallery: ["Images/AIV.jpg"],
-    video: videoURL11,
-    research: "Human-centered AI in 3D spaces.",
-    outcome: "Advanced UI for spatial computing."
+        title: "AIRCRAFT MAINTANANCE: Immersive VR Training Simulation",
+        image: "Images/MAG.jpg",
+        gallery: ["Images/ProjectImages/MAG1.png","Images/ProjectImages/MAG2.jpg","Images/ProjectImages/MAG0.jpg","Images/ProjectImages/MAG3.jpg","Images/ProjectImages/MAG4.jpg","Images/ProjectImages/MAG5.jpg"],
+        video: "https://www.youtube.com/embed/ZMSf3gnFBTI",
+        research: "Collaboration with Malaysia Airlines Berhad (MAB) Engineering. Traditional training in aircraft maintenance struggles to meet the demands of modern aviation. Thus, in a collaboration with Malaysia Airlines Berhad Engineering Service, an immersive VR Training Simulation application was designed and developed to elevate the competencies of aircraft maintenance personnel. Key benefits include improved training efficiency, cost savings, reduced safety risks, and enhanced job satisfaction. As aviation advances toward greater safety and efficiency, this VR innovation sets a new training standard with strong commercial potential as a scalable, cost-effective solution for industry-wide upskilling. The Virtual Reality simulator enables repeated practice without wear and tear on physical aircraft components, allowing scalable and consistent learning experiences across training cohorts. The simulator transforms aviation training by advancing safety, precision, and operational performance. It focuses on replicates real-world tools, environments, and scenarios with high fidelity to enable trainees to master complex tasks in a controlled, risk-free setting. The objective is to provide a platform that enhances skill acquisition and boosts confidence in performing critical maintenance procedures. VR training offers a promising approach to enhance the training of aircraft maintenance personnel, particularly for tasks that involve complex procedures or potential safety hazards. By simulating a realistic training environment, VR can provide a safe, efficient, and effective way for trainees to develop the skills and knowledge necessary to maintain aircraft safely and reliably.",
+        outcome: "Addressing the shortage of skilled trainers and ensuring procedural accuracy.",
+        pdf: "Pdf/Mag.pdf",
+        pdfTitle: "Aircraft VR Research"
+      },
+      {
+        title: "INCLUSIVE CULTURAL HERITAGE: the Case Study of Serralunga D'alba Castle",
+        image: "Images/Serralunga.jpg",
+        gallery: ["Images/ProjectImages/CIPA.jpg"],
+        video: "https://www.youtube.com/embed/AW8BPzwi0J4",
+        research: "Collaboration with drawing TO the future, Politechnico Di Torino Italy. Natural sites, monuments and historical artefacts are Cultural Heritage that must be properly managed to ensure their safeguard. Institutions and corporate body devoted to the Cultural Heritage management have the essential task of supervising them paying particular attention to their conservation, dissemination and fruition. In this regards, digital technologies through ICT (Information and Communication Technologies) and New Media represent useful tools which have to be used in suitable way. In this context, this contribution shares the methodology adopted for the case study of Serralunga d’Alba castle. In particular, the research project shows the process used for getting the digital model of the castle through HBIM (Historic Building Information Modeling) methodology and the development of a VR (Virtual Reality) model tour. The final project obtained is the result of a methodological approach that aimed to optimize time, costs and efforts.",
+        outcome: "Ruffino, P. A., Permadi, D., Gandino, E., Haron, A., Osello, A., & Wong, C. O. (2019). Digital technologies for inclusive cultural heritage: The case study of serralunga d’alba castle. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 4, 141-147.",
+        pdf: "Pdf/Serralunga.pdf",
+        pdfTitle: "Cultural Heritage Publication"
+      },
+{
+        title: "DIGITAL TWIN: The Development of VR Model for Digital Home",
+        image: "Images/Digitaltwin.jpg",
+        gallery: ["Images/Digitaltwin.jpg", "Images/ProjectImages/Digitaltwin1.jpg"],
+        video: "https://www.youtube.com/embed/Hbng3ianeIc",
+        research: "Despite virtual tour facilitating the visualization and marketing of actual properties via digital platforms, the persisting inadequacy of conventional approaches in delivering an authentic and immersive portrayal of property show units remains a challenge. In pursuit of addressing this challenge, the immersive VR Property Showhouse was developed to empower users to delve into Digital Home virtual tour in a more experiential and engaging manner. By capitalizing on immersive VR technology, users can traverse properties in a highly captivating and verisimilar fashion, cultivating a sense of presence and simulating the sensation of physically inhabiting the space. The technical details which include the design considerations for creating the immersive user experience for the app are presented. This paper additionally examines closely the existing literature on VR's application in real estate, showcasing the prospective advantages of this technological marvel. To gauge the efficacy of the VR application a usability evaluation was conducted using the System Usability Scale (SUS) with 30 participants. The outcome of the user evaluation manifested a positive user experience, with an average SUS score of 85, signifying exceptional usability. These results provide important knowledge for those looking to integrate immersive VR into the real estate industry and contribute to understanding how VR can be designed and used effectively to enhance user engagement and understanding of properties, ultimately influencing their decision-making process. Given the soaring popularity of virtual tours, it is important for real estate practitioners and VR developers to continuous seek innovative approaches to refine the features and immersion quality of these tours, ultimately delivering an unparalleled experience for potential buyers.",
+        outcome: "Cheong, S. N., Tan, J. H., Ng, W. Y., Permadi, D., Tan, Y. F., & Tan, W. H. (2023, October). Enhancing User Experience: Immersive Virtual Reality Property Showhouse. In 2023 IEEE 13th International Conference on System Engineering and Technology (ICSET) (pp. 29-34). IEEE. [Scopus Indexed].",
+        pdf: "Pdf/VRHome.pdf",
+        pdfTitle: "Digital Twin VR"
+      },
+
+      {
+        title: "ANCIENT MALAY HERITAGE: Virtual Reality Game Hikayat Hang Tuah",
+        image: "Images/HangTuah.jpg",
+        gallery: ["Images/ProjectImages/Hangtuah1.jpg"],
+        video: "https://www.youtube.com/embed/PnwfQAv72qw",
+        research: "This immersive visual work draws inspiration from the legendary Hikayat Hang Tuah, a cornerstone of classical Malay literature recognised as a heroic figure in the medieval Malay era. Set against a dreamlike tropical dusk, the scene invites the viewer into a reimagined world where myth and memory converge. The soft hues of the sunset reflect both serenity and fading glory, mirroring the enduring yet bittersweet tale of loyalty, honor, and moral conflict that defines Hang Tuah’s journey. The central figure, garbed in traditional attire and gazing across the still water toward the stilted houses, evokes contemplation and rootedness. This posture represents Hang Tuah's internal struggle between duty to his sultan and loyalty to his friend, Hang Jebat—a timeless tension that continues to provoke questions about justice and obedience. The carefully composed environment—lush vegetation, tranquil reflections, and distant mountains—serves not merely as a backdrop but as an emotional landscape. Nature here is both witness and participant in the unfolding human drama. The warm light bathes everything in a golden memory, suggesting reverence for the past yet hinting at the passage of time. This work seeks to honor the spiritual and cultural resonance of Hikayat Hang Tuah, inviting the viewer to step into a contemplative space where legend breathes, and where the values of a bygone era ask to be re-examined in the present.",
+        outcome: "By combining traditional Malay elements with innovative digital techniques, the piece not only preserves but reanimates identity, inviting reflection on personal and collective values. Emotionally, it evokes solitude, loyalty, and inner conflict—universal themes that remain relevant across time. Ultimately, the work embodies the essence of sustainaissance: a revival not just of aesthetics, but of meaning—sustaining cultural heritage, emotional depth, and identity in a way that is both timeless and future-facing.",
+        pdf: "Pdf/Hangtuah.pdf",
+        pdfTitle: "Malay Heritage XR"
+      },
+
+      {
+        title: "FRENCH LANGUAGE LEARNING: Immersive AR/VR for Educating Vocabulary",
+        image: "Images/French.jpg",
+        gallery: ["Images/ProjectImages/Mission.jpg", "Images/ProjectImages/Mission1.jpg"],
+        video: "https://www.youtube.com/embed/VoylQFutOCE",
+        research: "The project involves the creation of educational application using VR and AR technology to promote the learning of French language. As part of a cooperation project with Malaysia around the French language, the French Embassy has approached the MMU's Creative Multimedia faculty to create an AR/ VR educational application to promote the learning of French language. The project will be incorporated into the undergraduate VR assignment as an industry briefed project. The educational application is meant for the teaching of French language to teenagers (secondly and university) aged between 12 to 20 years old. The non-commercial mobile application can be downloaded from Android APP market I.e. Google Play. The students will be able to download the application to their mobile phone and to be deployed for immersive experience via a Google cardboard.",
+        outcome: "AR/ VR mobile phone application deployed for Google cardboard.",
+        pdf: "Pdf/FrenchVR.pdf",
+        pdfTitle: "French Immersive Learning"
+      },
+
+      {
+        title: "MOBILE AUGMENTED REALITY: Learning Islamic Dua Application for Kids",
+        image: "Images/Dailydua.jpg",
+        gallery: ["Images/Dailydua.jpg"],
+        video: "https://www.youtube.com/embed/NLgFOmOcte4",
+        research: "This research project experiments the potential of augmented reality based mobile apps in learning Islamic Dua for Kids. This project concentrates on the effectiveness of incorporating augmented reality interaction into mobile apps technology as a new digital Islamic edutainment medium for kids. Needless to say, the use of mobile learning applications has grown immensely over the last few years. With eLearning apps, children can use their leisure hours to learn something productive. However, there has been a lack of Islamic learning materials that incorporates the current computerassisted technologies such as augmented reality. This project proposes to implement augmented reality technology as a method to provide the unique interactivity on the learning of islamic Dua for kids, allow kids to interact and view the real world at the same time as vitual imaginary overlay on the top of real environment. The experiment will carry out with the prototyping and user testing in term of effectiveness on audience children age 5-10 years. By the time of the completion of this project, it is hoped that the apps may assist in improving Islamic education and attract more interest among children. The intention to implement augmented reality as a method to provide interactivity on learning Islamic Doa is to overcome the shortage of Islamic and religious learning materials. In addition, augmented reality is incorporated in the apps to cater to a variety of learning styles within the process of learning Islamic content.",
+        outcome: "AR Mobile Apps",
+        pdf: "PDF/Dua-Learning.pdf",
+        pdfTitle: "Islamic AR Learning"
+      },
+
+   {
+        title: "PARK AND RIDES SIMULATION: The Rig Virtual Reality",
+        image: "Images/Therig.jpg",
+        gallery: ["Images/Therig.jpg"],
+        video: "https://player.vimeo.com/video/831217730?h=c3d9cb3c35",
+        research: "Immersive Virtual Reality platform. While the park is still under development, you can explore its thrilling rides, breathtaking attractions, and unique features firsthand through our interactive VR experience. This isnt just a preview. Its a journey into the future. With our VR technology, you can feel the excitement, visualize the possibilities, and immerse yourself in the magic of what’s to come. Get ready to see the impossible become reality",
+        outcome: "Client : Holovis UK, Year : 2022.",
+        pdf: "PDF/TheRig.pdf",
+        pdfTitle: "The Rig VR Simulation"
+      },
+
+      {
+        title: "CONFINED SPACE SAFETY: Authorised Entrant & Standby Person in VR",
+        image: "Images/AIV.jpg",
+        gallery: ["Images/AIV.jpg"],
+        video: "https://www.youtube.com/embed/0k6UwH-hIUg",
+        research: "Immersive training solution designed to bridge the gap between theoretical knowledge and high-stakes reality. By leveraging the power of Virtual Reality, this project places users in a high-fidelity, simulated environment where they can master the critical coordination required between those entering hazardous spaces and the Lifeline watching from the outside. Gamifying Compliance: Moving beyond static slides into active, muscle-memory-building exercises. Risk-Free Failure: Allowing trainees to witness the consequences of a missed communication protocol or a failed gas monitor reading without real-world danger. Role Synchronicity: Specifically focusing on the Authorized Entrant and Standby Person, ensuring both parties understand the non-negotiable duties of monitoring, communication, and emergency evacuation.",
+        outcome: "Client : CastleKey Training, Year : 2020. ",
+        pdf: "PDF/Confined-Space.pdf",
+        pdfTitle: "Confined Space Safety"
+      },
+      {
+        title: "MUSEUM EXHIBITION: Citra Nusa at Borneo Culture Museum - The National Museum of Malaysia",
+        image: "Images/Museum.jpg",
+        gallery: ["Images/Museum.jpg","Images/ProjectImages/Museum1.jpg", "Images/ProjectImages/Museum2.jpg", "Images/ProjectImages/Museum3.jpg", "Images/ProjectImages/Museum4.jpg", "Images/ProjectImages/Museum8.png", "Images/ProjectImages/Museum5.jpg", "Images/ProjectImages/Museum6.jpg", "Images/ProjectImages/Museum7.jpg"],
+        video: "https://www.youtube.com/embed/-SgGO8Q4o50",
+        research: "I was invited to collaborate with Curazeum and Jabatan Muzium Malaysia for the project Citra Nusa at Muzium. The projects were showcased at three different museum exhibition locations: Borneo Cultures Museum Kuching, Sarawak (31 July until 5 August), Matang Museum, Perak (9-10 September) and Kota Kayang Museum (3-5 November). All immersive and interactive applications include Touch Wall of Traditional Instrument Malaysia, Digital Puzzle Malaysia Madani, Augmented Reality (AR) Pasar Pagi, and Kegemilangan Kesultanan Melayu Melaka. Organised by the Malaysian Museum Department, the Citra Nusa@ Museum was held in conjunction with Hari Muzium Antarabangsa 2023. It was inaugurated by Premier Sarawak Datuk Patinggi Tan Sri Abang Johari Tun Openg. The exhibition at the Matang Museum was officiated by Dato’ Seri Saarani Mohamad, the Chief Minister of Perak.  ",
+        outcome: "Client : The National Museum of Malaysia, Year : 2023. ",
+        pdf: "PDF/Museum.pdf",
+        pdfTitle: "Museum"
+      },
+      {
+        title: "SPATIAL AUGMENTED REALITY: Perak Man Projection Mapping",
+        image: "Images/Perakman.jpg",
+        gallery: ["Images/Perakman.jpg"],
+        video: "https://www.youtube.com/embed/TyUm7w27kaQ",
+        research: "Spiritualities Landscape Exhibition - illuminate the complex relationships between technology, nature, and human experience. Dendi’s approach is rooted in his expertise in immersive media and metaverse technologies. By blending educational storytelling with advanced digital projection, Perak Man serves as a vehicle for reanimating the deep past, making heritage sites accessible in new ways. The interactive nature of projection mapping allows the audience to witness the interplay of light, form, and history, as phantasms of the archaeological landscape materialize in the gallery space.",
+        outcome: "Client : Telekom Museum Kuala Lumpur, Year : 2024. ",
+        pdf: "Pdf/Perakman.pdf",
+        pdfTitle: "Perakman"
+      },
+{
+        title: "ARVR AND FILM: The concept of Film Vision in movies",
+        image: "Images/ARFilm.jpg",
+        gallery: ["Images/ARFilm.jpg"],
+        video: "https://www.youtube.com/embed/Eh8ZC1dkaVg",
+        research: "Technology Augmented Reality and Film. The concept of Film Vision in movies like Iron Man represents the gold standard for Heads-Up Displays (HUDs) and Diegetic User Interfaces. In the Marvel Cinematic Universe, Tony Stark’s interface isn't just a screen; it’s a spatial operating system that blends complex data with his physical environment.",
+        outcome: "Majoriti 7 Magazine Interview ",
+        pdf: "Pdf/ARFilm.pdf",
+        pdfTitle: "ARFilm"
+      },
+
+
+
+
+    ]
   },
 
+  {
+    category: "Spatial Design - Immersive Virtual Environments",
+    items: [
+      
+	{
+        title: "The Abyssal Atrium",
+        image: "Images/VE2.jpg",
+        gallery: ["Images/VE2.jpg"],
+        video: "https://www.youtube.com/embed/aHduR19d_3s",
+        research: "This image depicts a futuristic, underwater observation lounge or restaurant characterized by high-tech design and immersive views. At the center of the room stands a large, cylindrical floor-to-ceiling aquarium filled with various tropical fish, serving as a focal point. The surrounding walls feature large, reinforced windows that provide a panoramic view of the deep blue ocean, where additional marine life and silhouettes of distant figures can be seen. The ceiling and structural supports have a geometric, metallic finish, reinforcing the sci-fi aesthetic of a high-fidelity virtual simulation or a deep-sea research facility.",
+        outcome: "The Rig Project",
+        pdf: "PDF/Spatial-Design.pdf",
+        pdfTitle: "Spatial Presence Study"
+      },
 
+{
+        title: "The Descent of Echoes",
+        image: "Images/VE1.jpg",
+        gallery: ["Images/VE1.jpg"],
+        video: "https://www.youtube.com/embed/RrVKfxUPxrA",
+        research: "This surreal image captures a striking, dreamlike scene where a modern subway car is suspended or slowly sinking in a vast, ethereal underwater abyss. The lighting is a deep, monochromatic blue, filtered by the density of the water, with soft light beams cutting through the gloom from above. The entire composition evokes themes of isolation, the subconscious, and the intersection of urban life with the primal unknown.",
+        outcome: "This work is part of my experiment within the Unreal Engine virtual environment setup.",
+        pdf: "PDF/Spatial-Design.pdf",
+        pdfTitle: "Spatial Presence Study"
+      },
+
+{
+        title: "Industrial Play-Scape: Kids Center",
+        image: "Images/VE3.jpg",
+        gallery: ["Images/VE3.jpg"],
+        video: "https://www.youtube.com/embed/JKeXbFLutIQ",
+        research: "Stylized virtual environment of an indoor Kids Center. The design utilizes a playful and industrial aesthetic.",
+        outcome: "Virtual Environment Design.",
+        pdf: "PDF/Spatial-Design.pdf",
+        pdfTitle: "Spatial Presence Study"
+      },
+
+{
+        title: "Industrial Park Simulation",
+        image: "Images/VE4.jpg",
+        gallery: ["Images/VE4.jpg"],
+        video: "https://www.youtube.com/embed/Pk8fjGzYF5c",
+        research: "Part of the Rig Project",
+        outcome: "Virtual Environment Design.",
+        pdf: "PDF/Spatial-Design.pdf",
+        pdfTitle: "Spatial Presence Study"
+      },
+	
+{
+        title: "Rialto Bridge Virtual Setup",
+        image: "Images/VE5.jpg",
+        gallery: ["Images/VE5.jpg"],
+        video: "https://www.youtube.com/embed/c458dUbj7c0",
+        research: "This project features a virtual environment setup for the Rialto Bridge. The high-fidelity 3D models were developed by a collaborator from Politecnico di Torino, while I was responsible for the technical implementation of the environment to enable interactivity and immersive exploration.",
+        outcome: "Virtual Environment Interactivity Setup.",
+        pdf: "PDF/Spatial-Design.pdf",
+        pdfTitle: "Spatial Presence Study"
+      },
+{
+        title: "Tribute to the Malay Regiment - Historical Heritage",
+        image: "Images/VE6.jpg",
+        gallery: ["Images/ProjectImages/VE61.jpg"],
+        video: "https://www.youtube.com/embed/JabRSPJs3Mk",
+        research: "This project recreated battlefield in British Malaya. It reflects upon the heroic story of Leftenan Adnan who fought Japanese Occupation during World War II in 1942. It tracends a player in a historical national events, for remembering the batlle at Pasir Panjang.",
+        outcome: "Virtual Environment Interactivity Setup.",
+        pdf: "PDF/Chandu.pdf",
+        pdfTitle: "Tribute to the Malay Regiment"
+      },
+	
+      
+
+      
+
+      
+    ]
+  }
 ];
 
 const container = document.getElementById("projects");
-projects.forEach((p, i) => {
-  const div = document.createElement("div");
-  div.className = "project glass";
-  div.innerHTML = `
-    <img src="${p.image}" class="project-thumb">
-    <h3>${p.title}</h3>
-  `;
-  div.onclick = () => openProject(i);
-  container.appendChild(div);
+let flatProjects = [];
+
+projectGroups.forEach(group => {
+
+  const section = document.createElement("section");
+  section.className = "project-group";
+
+  const title = document.createElement("h2");
+  title.className = "group-title";
+  title.innerText = group.category;
+
+  const grid = document.createElement("div");
+  grid.className = "project-grid";
+
+  group.items.forEach(project => {
+
+    const index = flatProjects.length;
+    flatProjects.push(project);
+
+    const div = document.createElement("div");
+    div.className = "project glass";
+
+    div.innerHTML = `
+      <img src="${project.image}" class="project-thumb">
+      <h3>${project.title}</h3>
+    `;
+
+    div.onclick = () => openProject(index);
+
+    grid.appendChild(div);
+  });
+
+  section.appendChild(title);
+  section.appendChild(grid);
+
+  container.appendChild(section);
 });
 
 function openProject(i) {
+
+  document.getElementById('hero-section').style.display = 'none';
   document.getElementById('projects').style.display = 'none';
-  document.getElementById('biography').style.display = 'none';
-  document.getElementById('detail').style.display = 'block';
-  const p = projects[i];
+  document.getElementById('detail').style.display = 'block'
+
+  const p = flatProjects[i];
+
   document.getElementById('detail-title').innerText = p.title;
   document.getElementById('detail-video').src = p.video;
   document.getElementById('detail-research').innerText = p.research;
   document.getElementById('detail-outcome').innerText = p.outcome;
+
+  document.getElementById('pdf-viewer').src = p.pdf;
+  document.getElementById('pdf-title').innerText = p.pdfTitle;
 
   const gallery = document.getElementById('detail-images');
   gallery.innerHTML = "";
@@ -424,9 +708,19 @@ function openProject(i) {
   window.scrollTo(0,0);
 }
 
+function togglePDFViewer(){
+  const viewer = document.getElementById('pdf-viewer-container');
+
+  if(viewer.style.display === 'none'){
+    viewer.style.display = 'block';
+  } else {
+    viewer.style.display = 'none';
+  }
+}
+
 function goBack() {
-  document.getElementById('projects').style.display = 'grid';
-  document.getElementById('biography').style.display = 'block';
+  document.getElementById('hero-section').style.display = 'flex';
+  document.getElementById('projects').style.display = 'block';
   document.getElementById('detail').style.display = 'none';
   document.getElementById('detail-video').src = "";
 }

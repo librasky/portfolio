@@ -14,10 +14,22 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-              url('Images/BG.jpg') no-repeat center center fixed;
+              url('Images/BG1_XRImmersive.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   overflow-x: hidden;
+  background-color: #000;
+}
+
+/* Neural Network Background Canvas */
+#network-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .cursor-glow {
@@ -80,24 +92,9 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
-
-
- .profile-container {
-    width: 160px;
-    height: 160px;
-    margin-bottom: 20px;
-  }
-
-  .profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #6b8cff;
-    box-shadow: 0 0 20px rgba(107, 140, 255, 0.4);
-  }
-
 
 .hero h2 {
   font-size: 3rem;
@@ -106,7 +103,20 @@ nav a:hover {
   background: linear-gradient(to right, #6b8cff, #a855f7);
   -webkit-background-clip: text;
   color: transparent;
+  min-height: 1.2em;
 }
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  background-color: #6b8cff;
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
 
 .tagline {
   font-size: 1.2rem;
@@ -126,6 +136,8 @@ nav a:hover {
   max-width: 1300px;
   margin: 60px auto;
   padding: 0 25px;
+  position: relative;
+  z-index: 1;
 }
 
 .group-title {
@@ -208,9 +220,7 @@ iframe {
   transition: 0.3s;
 }
 
-.back-btn:hover {
-  transform: translateY(-2px);
-}
+.back-btn:hover { transform: translateY(-2px); }
 
 .detail-images {
   display: grid;
@@ -225,9 +235,7 @@ iframe {
   object-fit: cover;
 }
 
-.pdf-section {
-  margin-top: 25px;
-}
+.pdf-section { margin-top: 25px; }
 
 .pdf-card {
   display: flex;
@@ -252,14 +260,8 @@ iframe {
   font-weight: bold;
 }
 
-.pdf-info {
-  flex: 1;
-}
-
-.pdf-title {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+.pdf-info { flex: 1; }
+.pdf-title { font-weight: 700; margin-bottom: 8px; }
 
 .pdf-download {
   display: inline-block;
@@ -276,6 +278,8 @@ footer {
   padding: 40px 20px;
   background: rgba(0,0,0,0.4);
   margin-top: 60px;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-links a {
@@ -286,19 +290,15 @@ footer {
 }
 
 @media(max-width:768px){
-  .hero h2{
-    font-size:2.2rem;
-  }
-
-  iframe{
-    height:300px;
-  }
+  .hero h2{ font-size:2.2rem; }
+  iframe{ height:300px; }
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="network-canvas"></canvas>
 <div class="cursor-glow" id="glow"></div>
 
 <header>
@@ -306,68 +306,50 @@ footer {
     <h1>Dendi Permadi | Portfolio.</h1>
   </div>
   <nav>
-    
-   <a href="biography.html">Biography</a>
+    <a href="biography.html">Biography</a>
     <a href="research.html">Research</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="hero" id="hero-section">
-
-  <h2>Immersive XR Designer & Researcher</h2>
+  <h2 id="typing-text"></h2>
   <p class="tagline">
-    XR designers are a visionary bunch. We create innovations that do not yet exist, perhaps in this real world, experiment with ideas that are out of the box. While many creators can build VR, AR and MR applications using game engine  such as Unity3D or Unreal, but the real question is, will those applications have meaning? 
-
-Designing XR isn’t just about 3D modelling, scripting, or using the latest Gen AI to convert desktop versions to XR. It requires an innovative, open minded vision for user experience that goes beyond human-computer interaction. What is your application's purpose? Focus on creating meaningful experiences by aligning the right content with the unique strengths of the technology. Lets imagine the XR future human with wisdom.
-
-This website documents my collaborative process with students and showcases a selection of projects developed under my supervision, alongside my personal own professional projects, research and design works.
+    XR designers are a visionary bunch. We create innovations that do not yet exist, perhaps in this real world, experiment with ideas that are out of the box. While many creators can build VR, AR and MR applications using game engine such as Unity3D or Unreal, but the real question is, will those applications have meaning? 
+    <br><br>
+    Designing XR isn’t just about 3D modelling, scripting, or using the latest Gen AI to convert desktop versions to XR. It requires an innovative, open minded vision for user experience that goes beyond human-computer interaction. What is your application's purpose? Focus on creating meaningful experiences by aligning the right content with the unique strengths of the technology. Lets imagine the XR future human with wisdom.
+    <br><br>
+    This website documents my collaborative process with students and showcases a selection of projects developed under my supervision, alongside my personal own professional projects, research and design works.
   </p>
 </section>
-
 
 <div id="projects"></div>
 
 <section id="detail" class="detail">
   <button class="back-btn" onclick="goBack()">← Back to Projects</button>
-
   <h2 id="detail-title"></h2>
-
   <iframe id="detail-video" src="" allowfullscreen></iframe>
-
   <div class="panel">
-
     <strong>Research | Project Focus:</strong>
     <p id="detail-research"></p>
-
     <strong>Publication | Details:</strong>
     <p id="detail-outcome"></p>
-
     <div class="pdf-section">
       <strong>Related PDF:</strong>
-
       <div class="pdf-card">
         <div class="pdf-icon">PDF</div>
-
         <div class="pdf-info">
-          <div class="pdf-title" id="pdf-title">
-            Sample Research PDF
-          </div>
-
+          <div class="pdf-title" id="pdf-title">Sample Research PDF</div>
           <button id="pdf-link" class="pdf-download" onclick="togglePDFViewer()">View PDF</button>
         </div>
       </div>
     </div>
-
     <div id="pdf-viewer-container" style="display:none; margin-top:20px;">
       <iframe id="pdf-viewer" src="" style="width:100%; height:700px; border:none; border-radius:12px;"></iframe>
     </div>
-
     <div id="detail-images" class="detail-images"></div>
   </div>
-
   <br>
-
   <button class="back-btn" onclick="goBack()">← Back to Projects</button>
 </section>
 
@@ -377,21 +359,102 @@ This website documents my collaborative process with students and showcases a se
     <a href="https://instagram.com/dendipermadi" target="_blank">Instagram</a>
     <a href="https://scholar.google.com/citations?user=V3QARsgAAAAJ&hl=en&oi=ao" target="_blank">Research Page</a>
   </div>
-
-  <p style="margin-top:20px; opacity:0.5;">
-    © 2026 Dendi Permadi
-  </p>
+  <p style="margin-top:20px; opacity:0.5;">© 2026 Dendi Permadi</p>
 </footer>
 
 <script>
+/** 1. NEURAL NETWORK ANIMATION (BIGGER PARTICLES) **/
+const canvas = document.getElementById('network-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+const particleCount = 100;
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.radius = Math.random() * 3 + 2; // Bigger Particles
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(107, 140, 255, 0.8)';
+        ctx.fill();
+    }
+}
+
+for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 180) { // Larger connection radius
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(107, 140, 255, ${1 - dist / 180})`;
+                ctx.lineWidth = 0.8;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+
+/** 2. LOOPING TYPING EFFECT **/
+const typingTarget = document.getElementById('typing-text');
+const textToType = "Immersive XR Designer & Researcher";
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    const currentText = textToType.substring(0, charIndex);
+    typingTarget.innerHTML = currentText + '<span class="typing-cursor"></span>';
+    if (!isDeleting && charIndex < textToType.length) {
+        charIndex++;
+        setTimeout(typeEffect, 100);
+    } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 50);
+    } else {
+        isDeleting = !isDeleting;
+        setTimeout(typeEffect, isDeleting ? 3000 : 500); 
+    }
+}
+typeEffect();
+
+/** 3. PROJECT DATA (ALL RESTORED) **/
 const projectGroups = [
   {
     category: "Supervised Student Project",
     items: [
-      
-
-      
-
       {
         title: "UNLOCK REVERBERATE: Creative Showcase",
         image: "Images/Unlock0.jpg",
@@ -402,8 +465,7 @@ const projectGroups = [
         pdf: "Pdf/Unlock.pdf",
         pdfTitle: "Unlock REVERBERATE Book"
       },
-
-        {
+      {
         title: "REVITALIZING ART: Appreciation Through Immersive Virtual Reality",
         image: "Images/VR_art.jpg",
         gallery: ["Images/ProjectImages/VR_art1.jpg"],
@@ -413,8 +475,7 @@ const projectGroups = [
         pdf: "Pdf/VRArt.pdf",
         pdfTitle: "Immersive Art Appreciation"
       },
-
-{
+      {
         title: "DANCE HERITAGE: An Immersive VR Journey into Malaysian Joget",
         image: "Images/Dance.jpg",
         gallery: ["Images/ProjectImages/DanceVR1.png"],
@@ -424,9 +485,7 @@ const projectGroups = [
         pdf: "Pdf/DanceVR.pdf",
         pdfTitle: "Dance VR"
       },
-
-
-{
+      {
         title: "SURGICAL PROCEDURE Incision and Drainage VR with AI Trainer",
         image: "Images/Incision.jpg",
         gallery: ["Images/ProjectImages/Incision1.jpg", "Images/ProjectImages/Incision2.jpg"],
@@ -435,17 +494,12 @@ const projectGroups = [
         outcome: "Paper In-Progress",
         pdf: "Pdf/IncisionPDF.pdf",
         pdfTitle: "IncisionPDF"
-      },
-
-
-
+      }
     ]
   },
-
   {
     category: "Project: Industrial XR, Healthcare, Cultural Heritage, Safety & Education",
     items: [
-
       {
         title: "CARDIOPULMONARY RESUSCITATION: Enhancing Practical Skills with VR",
         image: "Images/CPR2.jpg",
@@ -456,7 +510,7 @@ const projectGroups = [
         pdf: "Pdf/CPRVR.pdf",
         pdfTitle: "CPR VR Research Publication"
       },
-{
+      {
         title: "AIRCRAFT MAINTANANCE: Immersive VR Training Simulation",
         image: "Images/MAG.jpg",
         gallery: ["Images/ProjectImages/MAG1.png","Images/ProjectImages/MAG2.jpg","Images/ProjectImages/MAG0.jpg","Images/ProjectImages/MAG3.jpg","Images/ProjectImages/MAG4.jpg","Images/ProjectImages/MAG5.jpg"],
@@ -476,7 +530,7 @@ const projectGroups = [
         pdf: "Pdf/Serralunga.pdf",
         pdfTitle: "Cultural Heritage Publication"
       },
-{
+      {
         title: "DIGITAL TWIN: The Development of VR Model for Digital Home",
         image: "Images/Digitaltwin.jpg",
         gallery: ["Images/Digitaltwin.jpg", "Images/ProjectImages/Digitaltwin1.jpg"],
@@ -486,7 +540,6 @@ const projectGroups = [
         pdf: "Pdf/VRHome.pdf",
         pdfTitle: "Digital Twin VR"
       },
-
       {
         title: "ANCIENT MALAY HERITAGE: Virtual Reality Game Hikayat Hang Tuah",
         image: "Images/HangTuah.jpg",
@@ -497,7 +550,6 @@ const projectGroups = [
         pdf: "Pdf/Hangtuah.pdf",
         pdfTitle: "Malay Heritage XR"
       },
-
       {
         title: "FRENCH LANGUAGE LEARNING: Immersive AR/VR for Educating Vocabulary",
         image: "Images/French.jpg",
@@ -508,7 +560,6 @@ const projectGroups = [
         pdf: "Pdf/FrenchVR.pdf",
         pdfTitle: "French Immersive Learning"
       },
-
       {
         title: "MOBILE AUGMENTED REALITY: Learning Islamic Dua Application for Kids",
         image: "Images/Dailydua.jpg",
@@ -519,8 +570,7 @@ const projectGroups = [
         pdf: "PDF/Dua-Learning.pdf",
         pdfTitle: "Islamic AR Learning"
       },
-
-   {
+      {
         title: "PARK AND RIDES SIMULATION: The Rig Virtual Reality",
         image: "Images/Therig.jpg",
         gallery: ["Images/Therig.jpg"],
@@ -530,7 +580,6 @@ const projectGroups = [
         pdf: "PDF/TheRig.pdf",
         pdfTitle: "The Rig VR Simulation"
       },
-
       {
         title: "CONFINED SPACE SAFETY: Authorised Entrant & Standby Person in VR",
         image: "Images/AIV.jpg",
@@ -542,7 +591,7 @@ const projectGroups = [
         pdfTitle: "Confined Space Safety"
       },
       {
-        title: "MUSEUM EXHIBITION: Citra Nusa at Borneo Culture Museum - The National Museum of Malaysia",
+        title: "MUSEUM EXHIBITION: Citra Nusa at Borneo Culture Museum",
         image: "Images/Museum.jpg",
         gallery: ["Images/Museum.jpg","Images/ProjectImages/Museum1.jpg", "Images/ProjectImages/Museum2.jpg", "Images/ProjectImages/Museum3.jpg", "Images/ProjectImages/Museum4.jpg", "Images/ProjectImages/Museum8.png", "Images/ProjectImages/Museum5.jpg", "Images/ProjectImages/Museum6.jpg", "Images/ProjectImages/Museum7.jpg"],
         video: "https://www.youtube.com/embed/-SgGO8Q4o50",
@@ -561,7 +610,7 @@ const projectGroups = [
         pdf: "Pdf/Perakman.pdf",
         pdfTitle: "Perakman"
       },
-{
+      {
         title: "ARVR AND FILM: The concept of Film Vision in movies",
         image: "Images/ARFilm.jpg",
         gallery: ["Images/ARFilm.jpg"],
@@ -570,19 +619,13 @@ const projectGroups = [
         outcome: "Majoriti 7 Magazine Interview ",
         pdf: "Pdf/ARFilm.pdf",
         pdfTitle: "ARFilm"
-      },
-
-
-
-
+      }
     ]
   },
-
   {
     category: "Spatial Design - Immersive Virtual Environments",
     items: [
-      
-	{
+      {
         title: "The Abyssal Atrium",
         image: "Images/VE2.jpg",
         gallery: ["Images/VE2.jpg"],
@@ -592,8 +635,7 @@ const projectGroups = [
         pdf: "Pdf/Spatial-Design.pdf",
         pdfTitle: "Spatial Presence Study"
       },
-
-{
+      {
         title: "The Descent of Echoes",
         image: "Images/VE1.jpg",
         gallery: ["Images/VE1.jpg"],
@@ -603,8 +645,7 @@ const projectGroups = [
         pdf: "Pdf/Spatial-Design.pdf",
         pdfTitle: "Spatial Presence Study"
       },
-
-{
+      {
         title: "Industrial Play-Scape: Kids Center",
         image: "Images/VE3.jpg",
         gallery: ["Images/VE3.jpg"],
@@ -614,8 +655,7 @@ const projectGroups = [
         pdf: "Pdf/Spatial-Design.pdf",
         pdfTitle: "Spatial Presence Study"
       },
-
-{
+      {
         title: "Industrial Park Simulation",
         image: "Images/VE4.jpg",
         gallery: ["Images/VE4.jpg"],
@@ -625,8 +665,7 @@ const projectGroups = [
         pdf: "Pdf/Spatial-Design.pdf",
         pdfTitle: "Spatial Presence Study"
       },
-	
-{
+      {
         title: "Rialto Bridge Virtual Setup",
         image: "Images/VE5.jpg",
         gallery: ["Images/VE5.jpg"],
@@ -636,7 +675,7 @@ const projectGroups = [
         pdf: "Pdf/Spatial-Design.pdf",
         pdfTitle: "Spatial Presence Study"
       },
-{
+      {
         title: "Tribute to the Malay Regiment - Historical Heritage",
         image: "Images/VE6.jpg",
         gallery: ["Images/ProjectImages/VE61.jpg"],
@@ -645,13 +684,7 @@ const projectGroups = [
         outcome: "Virtual Environment Interactivity Setup.",
         pdf: "Pdf/Chandu.pdf",
         pdfTitle: "Tribute to the Malay Regiment"
-      },
-	
-      
-
-      
-
-      
+      }
     ]
   }
 ];
@@ -660,60 +693,41 @@ const container = document.getElementById("projects");
 let flatProjects = [];
 
 projectGroups.forEach(group => {
-
   const section = document.createElement("section");
   section.className = "project-group";
-
   const title = document.createElement("h2");
   title.className = "group-title";
   title.innerText = group.category;
-
   const grid = document.createElement("div");
   grid.className = "project-grid";
 
   group.items.forEach(project => {
-
-    const index = flatProjects.length;
+    const idx = flatProjects.length;
     flatProjects.push(project);
-
     const div = document.createElement("div");
     div.className = "project glass";
-
-    div.innerHTML = `
-      <img src="${project.image}" class="project-thumb">
-      <h3>${project.title}</h3>
-    `;
-
-    div.onclick = () => openProject(index);
-
+    div.innerHTML = `<img src="${project.image}" class="project-thumb"><h3>${project.title}</h3>`;
+    div.onclick = () => openProject(idx);
     grid.appendChild(div);
   });
-
   section.appendChild(title);
   section.appendChild(grid);
-
   container.appendChild(section);
 });
 
 function openProject(i) {
-
   document.getElementById('hero-section').style.display = 'none';
   document.getElementById('projects').style.display = 'none';
-  document.getElementById('detail').style.display = 'block'
-
+  document.getElementById('detail').style.display = 'block';
   const p = flatProjects[i];
-
   document.getElementById('detail-title').innerText = p.title;
   document.getElementById('detail-video').src = p.video;
   document.getElementById('detail-research').innerText = p.research;
   document.getElementById('detail-outcome').innerText = p.outcome;
-
   document.getElementById('pdf-viewer').src = p.pdf;
   document.getElementById('pdf-title').innerText = p.pdfTitle;
-
   const gallery = document.getElementById('detail-images');
   gallery.innerHTML = "";
-
   if (p.gallery) {
     p.gallery.forEach(img => {
       const image = document.createElement("img");
@@ -721,25 +735,19 @@ function openProject(i) {
       gallery.appendChild(image);
     });
   }
-
   window.scrollTo(0,0);
 }
 
 function togglePDFViewer(){
-  const viewer = document.getElementById('pdf-viewer-container');
-
-  if(viewer.style.display === 'none'){
-    viewer.style.display = 'block';
-  } else {
-    viewer.style.display = 'none';
-  }
+  const v = document.getElementById('pdf-viewer-container');
+  v.style.display = (v.style.display === 'none') ? 'block' : 'none';
 }
 
 function goBack() {
-  //document.getElementById('hero-section').style.display = 'flex';
   document.getElementById('projects').style.display = 'block';
   document.getElementById('detail').style.display = 'none';
   document.getElementById('detail-video').src = "";
+  window.scrollTo(0,0);
 }
 
 document.addEventListener('mousemove', e => {

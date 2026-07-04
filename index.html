@@ -129,7 +129,7 @@ nav a:hover {
   font-size: 1.10rem;
   line-height: 1.5;
   color: #e0e0e0;           /* Brighter off-white for better contrast */
-  max-width: 850px;         /* Slightly wider for better text flow */
+  max-width: 1200px;         /* Slightly wider for better text flow */
   margin-top: 0px;
   padding: 10px;            /* Adds space inside the glass box */
   background: rgba(0, 0, 0, 0.2); /* Semi-transparent black box */
@@ -137,9 +137,27 @@ nav a:hover {
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 0px solid rgba(255, 255, 255, 0.1); /* Subtle border for depth */
-  text-align: left;         /* Left-aligned for easier long-form reading */
+  text-align: justify;         /* Left-aligned for easier long-form reading */
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   margin-bottom: -80px;
+
+ /* Flexbox rules added to support side-by-side profile layout */
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+/* Profile Image Styling */
+.profile-pic {
+  width: 280px;
+  height: 330px;
+  border-radius: 10%;
+  object-fit: cover;
+  border: 1px solid #00000;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(107, 140, 255, 0.2);
+
+
 }
 
 .glass {
@@ -344,13 +362,19 @@ footer {
 <section class="hero" id="hero-section">
   <h2 id="typing-text"></h2>
 
-  <p class="tagline">
+  <div class="tagline">
+ <!-- Replace source attribute with your real image path -->
+    <img src="Images/ProfilePict3.jpg" alt="Dendi Permadi" class="profile-pic">
+    
+    <div>
+
     ______XR designers are a visionary bunch. We create innovations that do not yet exist, perhaps in this real world, experiment with ideas that are out of the box. While many creators can build VR, AR and MR applications using game engine such as Unity3D or Unreal, but the real question is, will those applications have meaning? 
     <br><br>
     Designing XR isn’t just about 3D modelling, scripting, or using the latest Gen AI to convert desktop versions to XR. It requires an innovative, open minded vision for user experience that goes beyond human-computer interaction. What is your application's purpose? Focus on creating meaningful experiences by aligning the right content with the unique strengths of the technology. Lets imagine the XR future human with wisdom.
     <br><br>
     This website features my collaborative work with students, supervised projects, and my own professional research project and design.
-  </p>
+   </div>
+  </div>
 </section>
 
 
